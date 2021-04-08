@@ -4,6 +4,7 @@
 
 <style lang="scss">
 #app {
+  height: 100%;
   font-family: $kumbh-sans;
 
   h1,
@@ -28,6 +29,7 @@
 
   h4 {
     font-size: 0.875rem;
+    line-height: 18px;
   }
 }
 </style>
