@@ -1,8 +1,8 @@
 <template>
   <div class="header__toggle">
-    <img class="header__symbol" src="../assets/desktop/icon-sun.svg" alt="" />
+    <img src="../assets/desktop/icon-sun.svg" alt="" />
     <BaseToggle />
-    <img class="header__symbol" src="../assets/desktop/icon-moon.svg" alt="" />
+    <img src="../assets/desktop/icon-moon.svg" alt="" />
   </div>
 </template>
 
@@ -22,11 +22,7 @@ export default {
     width: 7rem;
     display: flex;
     justify-content: space-between;
-  }
-
-  &__symbol {
-    max-height: 1.25rem;
-    max-width: 1.25rem;
+    align-items: center;
   }
 }
 </style>
