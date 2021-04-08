@@ -1,6 +1,6 @@
 <template>
-  <header>
-    <h1>TheHeader</h1>
+  <header class="header">
+    <h1 class="header__title">devjobs</h1>
   </header>
 </template>
 
@@ -12,7 +12,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-header {
+.header {
   background: $primary-violet;
+
+  &__title {
+    color: $secondary-white;
+  }
 }
 </style>
