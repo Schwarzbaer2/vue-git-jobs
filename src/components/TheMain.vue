@@ -1,5 +1,9 @@
 <template>
   <main class="main">
+    <div class="main__search">
+      <MainSearch />
+    </div>
+
     <div class="main__grid">
       <MainCard v-for="job in jobs" :key="job.id" :job="job" />
     </div>
@@ -7,13 +11,15 @@
 </template>
 
 <script>
+import JobService from "../services/JobService";
+import MainSearch from "./MainSearch.vue";
 import MainCard from "./MainCard.vue";
-import axios from "axios";
 
 export default {
   name: "TheMain",
   components: {
     MainCard,
+    MainSearch,
   },
   data() {
     return {
@@ -21,8 +27,7 @@ export default {
     };
   },
   created() {
-    axios
-      .get("https://cors.bridged.cc/https://jobs.github.com/positions.json")
+    JobService.getJobs()
       .then((response) => {
         this.jobs = response.data;
       })
@@ -35,11 +40,19 @@ export default {
 
 <style lang="scss">
 .main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: auto;
-  padding-top: 4.5rem;
+  width: 100vw;
   background: $secondary-lightGrey;
 
+  &__search {
+    transform: translateY(-50%);
+  }
+
   &__grid {
+    padding-top: 1.2rem;
     display: grid;
     justify-items: center;
     grid-template-columns: 1fr;

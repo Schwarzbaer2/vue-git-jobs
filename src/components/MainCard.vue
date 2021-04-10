@@ -1,20 +1,22 @@
 <template>
-  <article>
-    <div class="card">
-      <img class="card__image" :src="job.company_logo" :alt="job.company" />
-      <p class="card__info">5h ago &bull; {{ job.type }}</p>
-      <div class="card__title">
-        <h3 v-if="job.title.length < 20">{{ job.title }}</h3>
-        <h3 v-else>{{ job.title.substring(0, 23) + ".." }}</h3>
+  <router-link :to="{ name: 'JobDetails', params: { id: job.id } }">
+    <article>
+      <div class="card">
+        <img class="card__image" :src="job.company_logo" :alt="job.company" />
+        <p class="card__info">5h ago &bull; {{ job.type }}</p>
+        <div class="card__title">
+          <h3 v-if="job.title.length < 20">{{ job.title }}</h3>
+          <h3 v-else>{{ job.title.substring(0, 23) + ".." }}</h3>
+        </div>
+        <div class="card__firm">
+          <p>{{ job.company }}</p>
+        </div>
+        <div class="card__location">
+          <h4>{{ job.location }}</h4>
+        </div>
       </div>
-      <div class="card__firm">
-        <p>{{ job.company }}</p>
-      </div>
-      <div class="card__location">
-        <h4>{{ job.location }}</h4>
-      </div>
-    </div>
-  </article>
+    </article>
+  </router-link>
 </template>
 
 <script>

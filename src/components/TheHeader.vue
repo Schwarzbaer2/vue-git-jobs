@@ -2,12 +2,10 @@
   <header>
     <div class="header">
       <div class="header__top">
-        <h1>devjobs</h1>
+        <router-link class="header__logo" to="/">
+          <h1>devjobs</h1>
+        </router-link>
         <HeaderToggle />
-      </div>
-
-      <div class="header__search">
-        <HeaderSearch />
       </div>
     </div>
   </header>
@@ -15,11 +13,10 @@
 
 <script>
 import HeaderToggle from "./HeaderToggle.vue";
-import HeaderSearch from "./HeaderSearch.vue";
 
 export default {
   name: "TheHeader",
-  components: { HeaderToggle, HeaderSearch },
+  components: { HeaderToggle },
 };
 </script>
 
@@ -30,7 +27,7 @@ export default {
   flex-direction: column;
   align-items: center;
   height: 8.5rem;
-  width: 100vw;
+  width: 100%;
   padding: 2rem 1.5rem 0rem 1.5rem;
   background-image: url("../assets/mobile/bg-pattern-header.svg");
   background-size: cover;
@@ -41,11 +38,11 @@ export default {
     justify-content: space-between;
     align-self: stretch;
     align-items: baseline;
-    color: $secondary-white;
   }
 
-  &__search {
-    margin-top: 2rem;
+  &__logo {
+    text-decoration: none;
+    color: $secondary-white;
   }
 }
 </style>

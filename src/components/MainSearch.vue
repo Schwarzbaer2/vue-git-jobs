@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: "HeaderSearch",
+  name: "MainSearch",
 };
 </script>
 
@@ -45,6 +45,10 @@ export default {
 
   &__icons {
     padding: 0 1.5rem 0 0;
+  }
+
+  &__filter {
+    padding-right: 1.5rem;
   }
 }
 </style>

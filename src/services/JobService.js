@@ -11,9 +11,9 @@ const apiClient = axios.create({
 
 export default {
   getJobs() {
-    return apiClient.get();
+    return apiClient.get(+".json");
   },
   getJob(id) {
-    return apiClient.get(id);
+    return apiClient.get(id + ".json");
   },
 };
