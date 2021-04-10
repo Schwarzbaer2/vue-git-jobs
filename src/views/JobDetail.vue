@@ -79,8 +79,11 @@ export default {
   }
 
   &__logo {
-    max-height: 50px;
+    max-height: 3.125rem;
     max-width: 16rem;
+    transform: translateY(-85%);
+    border-radius: 0.938rem;
+    box-shadow: 0px 5px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
   }
 }
 </style>
