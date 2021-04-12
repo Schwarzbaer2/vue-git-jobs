@@ -31,14 +31,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
+a {
+  text-decoration: none;
+}
+
 .card {
   height: 14rem;
   width: 20rem;
   padding: 0 2rem;
   background: $secondary-white;
   cursor: pointer;
-
-  text-overflow: ellipsis;
 
   &__image {
     transform: translateY(-50%);
