@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "https://cors.bridged.cc/https://jobs.github.com/positions/",
+  baseURL: `https://cors.bridged.cc/https://jobs.github.com/positions`,
   withCredentials: false,
   headers: {
     Accept: "application/json",
@@ -10,10 +10,7 @@ const apiClient = axios.create({
 });
 
 export default {
-  getJobs() {
-    return apiClient.get(+".json");
-  },
   getJob(id) {
-    return apiClient.get(id + ".json");
+    return apiClient.get(id);
   },
 };

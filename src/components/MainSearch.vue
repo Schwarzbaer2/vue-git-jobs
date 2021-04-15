@@ -1,6 +1,9 @@
 <template>
   <div class="search">
     <input
+      v-model="searchTerm"
+      @input="onInput"
+      @keyup.enter="startSearch"
       class="search__input"
       type="search"
       name="job-search"
@@ -15,7 +18,9 @@
         src="../assets/mobile/icon-filter.svg"
         alt=""
       />
-      <img src="../assets/desktop/icon-search.svg" alt="" />
+      <button class="search__button" @click="startSearch">
+        <img src="../assets/desktop/icon-search.svg" alt="" />
+      </button>
     </div>
   </div>
 </template>
@@ -23,6 +28,20 @@
 <script>
 export default {
   name: "MainSearch",
+  data() {
+    return {
+      searchTerm: "",
+    };
+  },
+
+  methods: {
+    onInput() {
+      this.$emit("search-jobs", { term: this.searchTerm });
+    },
+    startSearch() {
+      this.$emit("start-search");
+    },
+  },
 };
 </script>
 
@@ -41,6 +60,7 @@ export default {
     width: 50%;
     padding: 0 0 0 1.5rem;
     border: none;
+    outline: none;
   }
 
   &__icons {
@@ -49,6 +69,10 @@ export default {
 
   &__filter {
     padding-right: 1.5rem;
+  }
+
+  &__button {
+    border: none;
   }
 }
 </style>

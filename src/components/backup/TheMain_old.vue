@@ -1,8 +1,7 @@
 <template>
   <main class="main">
-    <Modal />
     <div class="main__search">
-      <MainSearch @search-jobs="onSearchJobs" @start-search="getJobs" />
+      <MainSearch @search-jobs="onSearchJobs" />
     </div>
 
     <div class="main__grid">
@@ -16,11 +15,10 @@
 </template>
 
 <script>
-import axios from "axios";
+import JobService from "../services/JobService";
 import MainSearch from "./MainSearch.vue";
 import MainCard from "./MainCard.vue";
 import BaseButton from "./BaseButton.vue";
-import Modal from "./Modal.vue";
 
 export default {
   name: "TheMain",
@@ -28,33 +26,26 @@ export default {
     MainCard,
     MainSearch,
     BaseButton,
-    Modal,
   },
   data() {
     return {
-      jobs: [],
+      jobs: null,
       searchTerm: "",
-      location: "",
-      fullTime: false,
     };
   },
   methods: {
-    getJobs(event) {
-      axios
-        .get(
-          `https://cors.bridged.cc/https://jobs.github.com/positions.json?description=${this.searchTerm}&full_time=${this.fullTime}&location=${this.location}`
-        )
-        .then((response) => {
-          console.log(response.data);
-          this.jobs = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
     onSearchJobs(event) {
       this.searchTerm = event.term;
     },
+  },
+  created() {
+    JobService.getJobs()
+      .then((response) => {
+        this.jobs = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
 };
 </script>
@@ -65,7 +56,6 @@ export default {
   flex-direction: column;
   align-items: center;
   height: auto;
-  min-height: 87vh;
   width: 100vw;
   background: $secondary-lightGrey;
 
