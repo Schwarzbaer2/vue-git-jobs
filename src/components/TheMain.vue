@@ -1,8 +1,19 @@
 <template>
   <main class="main">
-    <Modal />
+    <div v-if="openModal === true" class="main__modal">
+      <Modal
+        @open-modal="toogleMenu"
+        @search-locations="onSearchLocations"
+        @start-search="getJobs"
+      />
+    </div>
+
     <div class="main__search">
-      <MainSearch @search-jobs="onSearchJobs" @start-search="getJobs" />
+      <MainSearch
+        @search-jobs="onSearchJobs"
+        @start-search="getJobs"
+        @open-modal="toogleMenu"
+      />
     </div>
 
     <div class="main__grid">
@@ -34,15 +45,16 @@ export default {
     return {
       jobs: [],
       searchTerm: "",
-      location: "",
+      searchLocation: "",
       fullTime: false,
+      openModal: false,
     };
   },
   methods: {
     getJobs(event) {
       axios
         .get(
-          `https://cors.bridged.cc/https://jobs.github.com/positions.json?description=${this.searchTerm}&full_time=${this.fullTime}&location=${this.location}`
+          `https://cors.bridged.cc/https://jobs.github.com/positions.json?description=${this.searchTerm}&full_time=${this.fullTime}&location=${this.searchLocation}`
         )
         .then((response) => {
           console.log(response.data);
@@ -55,6 +67,15 @@ export default {
     onSearchJobs(event) {
       this.searchTerm = event.term;
     },
+    onSearchLocations(event) {
+      this.searchLocation = event.term;
+    },
+    toogleMenu() {
+      this.openModal = !this.openModal;
+    },
+  },
+  created() {
+    this.getJobs();
   },
 };
 </script>
@@ -84,5 +105,9 @@ export default {
   &__button {
     padding-bottom: 3.875rem;
   }
+}
+
+.--hidden {
+  display: none;
 }
 </style>

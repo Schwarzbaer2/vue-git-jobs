@@ -17,12 +17,14 @@ export default {
 
 <style lang="scss">
 .button {
-  padding: 1.5rem 3.5rem;
+  height: 2.5rem;
+  width: 5.5rem;
   background: $primary-violet;
   color: $secondary-white;
   border: none;
   border-radius: 0.313rem;
   font-family: $kumbh-sans;
   font-weight: bold;
+  outline: none;
 }
 </style>

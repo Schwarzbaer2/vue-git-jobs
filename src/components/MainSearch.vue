@@ -13,11 +13,10 @@
     />
 
     <div class="search__icons">
-      <img
-        class="search__filter"
-        src="../assets/mobile/icon-filter.svg"
-        alt=""
-      />
+      <button class="search__filter" @click="openModal">
+        <img src="../assets/mobile/icon-filter.svg" alt="" />
+      </button>
+
       <button class="search__button" @click="startSearch">
         <img src="../assets/desktop/icon-search.svg" alt="" />
       </button>
@@ -40,6 +39,9 @@ export default {
     },
     startSearch() {
       this.$emit("start-search");
+    },
+    openModal() {
+      this.$emit("open-modal");
     },
   },
 };
