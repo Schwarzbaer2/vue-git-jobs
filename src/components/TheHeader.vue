@@ -20,7 +20,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .header {
   display: flex;
   flex-direction: column;
@@ -28,6 +28,7 @@ export default {
   height: 8.5rem;
   width: 100%;
   padding: 2rem 1.5rem 0rem 1.5rem;
+  background-color: $secondary-lightGrey;
   background-image: url("../assets/mobile/bg-pattern-header.svg");
   background-size: cover;
   background-repeat: no-repeat;

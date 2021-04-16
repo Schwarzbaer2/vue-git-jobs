@@ -1,8 +1,23 @@
 @include media-md {
+  .header {
+    background-image: url("~@/assets/tablet/bg-pattern-header.svg");
+  }
+
+  .main {
+    &__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 }
 
 @include media-lg {
-}
+  .header {
+    background-image: url("~@/assets/desktop/bg-pattern-header.svg");
+  }
 
-@include media-xl {
+  .main {
+    &__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
 }
