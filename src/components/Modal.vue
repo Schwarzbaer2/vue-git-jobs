@@ -20,6 +20,7 @@
             type="checkbox"
             name="searchFullTime"
             id="searchFullTime"
+            @change="onChange"
           />
           Full Time Only
         </p>
@@ -48,6 +49,9 @@ export default {
     },
     onInput() {
       this.$emit("search-locations", { term: this.searchLocation });
+    },
+    onChange() {
+      this.$emit("input-checked");
     },
     startSearch() {
       this.$emit("start-search");

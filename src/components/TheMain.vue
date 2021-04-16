@@ -5,6 +5,7 @@
         @open-modal="toogleMenu"
         @search-locations="onSearchLocations"
         @start-search="getJobs"
+        @input-checked="toggleFulltime"
       />
     </div>
 
@@ -72,6 +73,9 @@ export default {
     },
     toogleMenu() {
       this.openModal = !this.openModal;
+    },
+    toggleFulltime() {
+      this.fullTime = !this.fullTime;
     },
   },
   created() {

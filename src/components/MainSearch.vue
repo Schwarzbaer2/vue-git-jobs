@@ -54,7 +54,7 @@ export default {
   justify-content: space-between;
   height: 5rem;
   width: 28rem;
-  background: #fff;
+  background: $secondary-white;
   border-radius: 0.375rem;
 
   &__input {
@@ -71,10 +71,13 @@ export default {
 
   &__filter {
     padding-right: 1.5rem;
+    border: 0;
+    background: $secondary-white;
   }
 
   &__button {
     border: none;
+    background: $secondary-white;
   }
 }
 </style>
