@@ -18,7 +18,13 @@
     </div>
 
     <div class="main__grid">
-      <MainCard v-for="job in jobs" :key="job.id" :job="job" />
+      <MainCard
+        v-for="job in jobs"
+        :key="job.id"
+        :job="job"
+        :mode="mode"
+        @changeColor="$emit('changeColor')"
+      />
     </div>
 
     <div class="main__button">
@@ -42,6 +48,7 @@ export default {
     BaseButton,
     Modal,
   },
+  props: ["mode"],
   data() {
     return {
       jobs: [],
@@ -58,7 +65,6 @@ export default {
           `https://cors.bridged.cc/https://jobs.github.com/positions.json?description=${this.searchTerm}&full_time=${this.fullTime}&location=${this.searchLocation}`
         )
         .then((response) => {
-          console.log(response.data);
           this.jobs = response.data;
         })
         .catch((error) => {

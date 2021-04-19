@@ -1,7 +1,12 @@
 <template>
   <router-link :to="{ name: 'JobDetails', params: { id: job.id } }">
     <article>
-      <div class="card">
+      <div
+        class="card"
+        :class="mode"
+        :mode="mode"
+        @changeColor="$emit('changeColor')"
+      >
         <img class="card__image" :src="job.company_logo" :alt="job.company" />
         <p class="card__info">5h ago &bull; {{ job.type }}</p>
         <div class="card__title">
@@ -21,16 +26,11 @@
 
 <script>
 export default {
-  props: {
-    job: {
-      type: Object,
-      required: true,
-    },
-  },
+  props: ["mode", "job"],
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 a {
   text-decoration: none;
 }
@@ -68,5 +68,10 @@ a {
   &__location {
     color: $primary-violet;
   }
+}
+
+.--dark {
+  background: $primary-blue;
+  color: $secondary-white;
 }
 </style>

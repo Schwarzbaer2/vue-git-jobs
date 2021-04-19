@@ -1,7 +1,7 @@
 <template>
   <div>
     <TheHeader :class="mode" :mode="mode" @changeColor="changeColor" />
-    <TheMain :class="mode" />
+    <TheMain :class="mode" :mode="mode" />
   </div>
 </template>
 
@@ -35,6 +35,6 @@ export default {
 
 <style lang="scss">
 .--dark {
-  background: #121721;
+  background: $primary-dark;
 }
 </style>
