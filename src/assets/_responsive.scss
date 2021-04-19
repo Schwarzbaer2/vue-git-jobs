@@ -20,4 +20,20 @@
       grid-template-columns: repeat(3, 1fr);
     }
   }
+
+  .job {
+    &__article {
+      min-width: 45rem;
+      max-width: 45rem;
+    }
+
+    &____footer {
+      min-width: 45rem;
+      max-width: 45rem;
+    }
+
+    &__contact {
+      background-image: url("~@/assets/desktop/bg-pattern-detail-footer.svg");
+    }
+  }
 }

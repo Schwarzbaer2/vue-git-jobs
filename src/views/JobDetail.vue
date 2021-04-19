@@ -2,42 +2,46 @@
   <TheHeader />
   <div class="job" v-if="job">
     <article>
-      <header>
-        <div class="job__header">
-          <img class="job__logo" :src="job.company_logo" :alt="job.company" />
-          <h3>{{ job.company }}</h3>
+      <div class="job__article">
+        <header>
+          <div class="job__header">
+            <img class="job__logo" :src="job.company_logo" :alt="job.company" />
+            <h3>{{ job.company }}</h3>
 
-          <base-button>Company Site</base-button>
-        </div>
-      </header>
+            <base-button>Company Site</base-button>
+          </div>
+        </header>
 
-      <div class="job__content">
-        <p class="job__info">1w ago &bull; {{ job.type }}</p>
-        <div class="job__company">
-          <h3 class="">{{ job.title }}</h3>
-        </div>
-        <div class="job__location">
-          <h4>{{ job.location }}</h4>
-        </div>
+        <div class="job__content">
+          <p class="job__info">1w ago &bull; {{ job.type }}</p>
+          <div class="job__company">
+            <h3 class="">{{ job.title }}</h3>
+          </div>
+          <div class="job__location">
+            <h4>{{ job.location }}</h4>
+          </div>
 
-        <div class="job__apply">
-          <base-button>Apply Now</base-button>
-        </div>
+          <div class="job__apply">
+            <base-button>Apply Now</base-button>
+          </div>
 
-        <div class="job__description" v-html="job.description"></div>
+          <div class="job__description" v-html="job.description"></div>
+        </div>
       </div>
     </article>
 
-    <div class="job__contact">
-      <h3>How to Apply</h3>
+    <div class="job__footer">
+      <div class="job__contact">
+        <h3>How to Apply</h3>
 
-      <div v-html="job.how_to_apply"></div>
-    </div>
+        <div v-html="job.how_to_apply"></div>
+      </div>
 
-    <div class="job__apply">
-      <base-button>
-        Apply Now
-      </base-button>
+      <div class="job__apply">
+        <base-button>
+          Apply Now
+        </base-button>
+      </div>
     </div>
   </div>
 </template>
@@ -46,8 +50,10 @@
 import JobService from "../services/JobService";
 import TheHeader from "@/components/TheHeader.vue";
 import BaseButton from "../components/BaseButton.vue";
+import "../assets/_responsive.scss";
 
 export default {
+  name: "JobDetail",
   props: ["id"],
   components: {
     TheHeader,
@@ -79,6 +85,10 @@ export default {
   padding: 0 3rem;
   background: $secondary-lightGrey;
   width: 100%;
+
+  &__article {
+    max-width: 37rem;
+  }
 
   &__header {
     height: 205px;
@@ -145,12 +155,16 @@ export default {
     box-shadow: 0px 5px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
   }
 
+  &__footer {
+    width: 100%;
+    max-width: 43rem;
+  }
+
   &__contact {
-    min-width: 100%;
-    max-width: 100%;
+    width: 100%;
     padding: 2rem 1.5rem 2rem 1.5rem;
     margin-bottom: 2rem;
-    background-image: url("../assets/mobile/bg-pattern-header.svg");
+    background-image: url("../assets/mobile/bg-pattern-detail-footer.svg");
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 0.375rem;
@@ -178,7 +192,6 @@ export default {
 
   &__apply {
     min-height: 6rem;
-    min-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;

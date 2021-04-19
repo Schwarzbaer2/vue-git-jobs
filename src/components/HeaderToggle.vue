@@ -1,8 +1,8 @@
 <template>
   <div class="header__toggle">
-    <img src="../assets/desktop/icon-sun.svg" alt="" />
-    <BaseToggle />
-    <img src="../assets/desktop/icon-moon.svg" alt="" />
+    <img src="../assets/desktop/icon-sun.svg" alt="Light Mode" />
+    <BaseToggle :mode="mode" @toggle="$emit('toggle')" />
+    <img src="../assets/desktop/icon-moon.svg" alt="Dark Mode" />
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <main class="main">
+  <main class="main" :class="mode">
     <div v-if="openModal === true" class="main__modal">
       <Modal
         @open-modal="toogleMenu"
@@ -47,8 +47,9 @@ export default {
       jobs: [],
       searchTerm: "",
       searchLocation: "",
-      fullTime: false,
+      fullTime: "",
       openModal: false,
+      mode: "--dark",
     };
   },
   methods: {
@@ -75,7 +76,14 @@ export default {
       this.openModal = !this.openModal;
     },
     toggleFulltime() {
-      this.fullTime = !this.fullTime;
+      this.fullTime !== "on" ? (this.fullime = "on") : (this.fullTime = "");
+    },
+    toggle() {
+      if (this.mode === "dark") {
+        this.mode = "light";
+      } else {
+        this.mode = "--dark";
+      }
     },
   },
   created() {
@@ -111,7 +119,7 @@ export default {
   }
 }
 
-.--hidden {
-  display: none;
+.--dark {
+  background: $primary-dark;
 }
 </style>
