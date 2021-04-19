@@ -1,13 +1,6 @@
 <template>
   <label class="toggle" for="myToggle">
-    <input
-      :checked="mode === '--dark' ? 'checked' : false"
-      @change="$emit('toggle')"
-      class="toggle__input"
-      name=""
-      type="checkbox"
-      id="myToggle"
-    />
+    <input class="toggle__input" name="" type="checkbox" id="myToggle" />
     <div class="toggle__fill"></div>
   </label>
 </template>

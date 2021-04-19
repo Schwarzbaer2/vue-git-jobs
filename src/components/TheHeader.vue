@@ -17,6 +17,7 @@ import HeaderToggle from "./HeaderToggle.vue";
 export default {
   name: "TheHeader",
   components: { HeaderToggle },
+  props: ["mode"],
 };
 </script>
 
@@ -36,8 +37,9 @@ export default {
   &__top {
     display: flex;
     justify-content: space-between;
-    align-self: stretch;
     align-items: baseline;
+    width: 100%;
+    max-width: 65rem;
   }
 
   &__logo {

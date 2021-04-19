@@ -1,7 +1,7 @@
 <template>
   <div class="header__toggle">
     <img src="../assets/desktop/icon-sun.svg" alt="Light Mode" />
-    <BaseToggle :mode="mode" @toggle="$emit('toggle')" />
+    <BaseToggle />
     <img src="../assets/desktop/icon-moon.svg" alt="Dark Mode" />
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .header {
   &__toggle {
     height: 1.5rem;
