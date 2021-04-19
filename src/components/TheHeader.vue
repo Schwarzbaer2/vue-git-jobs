@@ -5,7 +5,7 @@
         <router-link class="header__logo" to="/">
           <h1>devjobs</h1>
         </router-link>
-        <HeaderToggle />
+        <HeaderToggle :mode="mode" @changeColor="$emit('changeColor')" />
       </div>
     </div>
   </header>
@@ -29,7 +29,6 @@ export default {
   height: 8.5rem;
   width: 100%;
   padding: 2rem 1.5rem 0rem 1.5rem;
-  background-color: $secondary-lightGrey;
   background-image: url("../assets/mobile/bg-pattern-header.svg");
   background-size: cover;
   background-repeat: no-repeat;

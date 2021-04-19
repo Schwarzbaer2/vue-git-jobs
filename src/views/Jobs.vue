@@ -1,7 +1,7 @@
 <template>
   <div>
-    <TheHeader />
-    <TheMain />
+    <TheHeader :class="mode" :mode="mode" @changeColor="changeColor" />
+    <TheMain :class="mode" />
   </div>
 </template>
 
@@ -16,5 +16,25 @@ export default {
     TheHeader,
     TheMain,
   },
+  data() {
+    return {
+      mode: "",
+    };
+  },
+  methods: {
+    changeColor() {
+      if (this.mode === "--dark") {
+        this.mode = "light";
+      } else {
+        this.mode = "--dark";
+      }
+    },
+  },
 };
 </script>
+
+<style lang="scss">
+.--dark {
+  background: #121721;
+}
+</style>

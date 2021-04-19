@@ -1,6 +1,12 @@
 <template>
   <label class="toggle" for="myToggle">
-    <input class="toggle__input" name="" type="checkbox" id="myToggle" />
+    <input
+      class="toggle__input"
+      type="checkbox"
+      :checked="mode === 'dark' ? 'checked' : false"
+      id="myToggle"
+      @change="$emit('changeColor')"
+    />
     <div class="toggle__fill"></div>
   </label>
 </template>
@@ -8,7 +14,6 @@
 <script>
 export default {
   name: "BaseToggle",
-  props: ["mode"],
 };
 </script>
 
