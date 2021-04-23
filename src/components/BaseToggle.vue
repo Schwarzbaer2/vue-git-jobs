@@ -3,9 +3,9 @@
     <input
       class="toggle__input"
       type="checkbox"
-      :checked="'mode' === '--dark' ? 'checked' : false"
       id="myToggle"
       @change="$emit('changeColor')"
+      :checked="mode === '--dark'"
     />
     <div class="toggle__fill"></div>
   </label>
@@ -15,6 +15,9 @@
 export default {
   name: "BaseToggle",
   props: ["mode"],
+  data() {
+    return {};
+  },
 };
 </script>
 

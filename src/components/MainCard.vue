@@ -56,7 +56,6 @@ a {
     border-radius: 0.938rem;
     box-shadow: 0px 5px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
     object-fit: scale-down;
-    background: #fff;
   }
 
   &__info {

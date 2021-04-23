@@ -30,6 +30,14 @@ export default {
       }
     },
   },
+  watch: {
+    mode: function() {
+      localStorage.setItem("mode", JSON.stringify(this.mode));
+    },
+  },
+  created() {
+    this.mode = JSON.parse(localStorage.getItem("mode"));
+  },
 };
 </script>
 

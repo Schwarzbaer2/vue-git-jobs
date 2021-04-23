@@ -1,10 +1,10 @@
 <template>
-  <TheHeader />
-  <div class="job" v-if="job">
+  <TheHeader :class="mode" :mode="mode" @changeColor="changeColor" />
+  <div class="job" :class="mode" v-if="job">
     <article>
       <div class="job__article">
         <header>
-          <div class="job__header">
+          <div class="job__header" :class="mode">
             <img class="job__logo" :src="job.company_logo" :alt="job.company" />
             <h3>{{ job.company }}</h3>
 
@@ -12,7 +12,7 @@
           </div>
         </header>
 
-        <div class="job__content">
+        <div class="job__content" :class="mode">
           <p class="job__info">
             {{ timestamp }} &bull;
             {{ job.type }}
@@ -24,7 +24,7 @@
             <h4>{{ job.location }}</h4>
           </div>
 
-          <div class="job__apply">
+          <div class="job__apply" :class="mode">
             <base-button>Apply Now</base-button>
           </div>
 
@@ -40,7 +40,7 @@
         <div v-html="job.how_to_apply"></div>
       </div>
 
-      <div class="job__apply">
+      <div class="job__apply" :class="mode">
         <base-button>
           Apply Now
         </base-button>
@@ -58,7 +58,7 @@ import "../assets/_responsive.scss";
 
 export default {
   name: "JobDetail",
-  props: ["id"],
+  props: ["id", "mode"],
   components: {
     TheHeader,
     BaseButton,
@@ -66,13 +66,34 @@ export default {
   data() {
     return {
       job: null,
+      mode: "",
     };
+  },
+  methods: {
+    changeColor() {
+      if (this.mode === "--dark") {
+        this.mode = "light";
+      } else {
+        this.mode = "--dark";
+      }
+    },
   },
   computed: {
     timestamp: function() {
       return moment(new Date(this.job.created_at)).fromNow();
     },
   },
+
+  watch: {
+    mode: function() {
+      localStorage.setItem("mode", JSON.stringify(this.mode));
+    },
+  },
+
+  updated() {
+    this.mode = JSON.parse(localStorage.getItem("mode"));
+  },
+
   created() {
     JobService.getJob(this.id)
       .then((response) => {
@@ -207,5 +228,25 @@ export default {
     background: $secondary-white;
     border-radius: 0.375rem;
   }
+}
+
+.job__content.--dark {
+  background: $primary-blue;
+  color: $secondary-white;
+}
+
+.job__apply.--dark {
+  background: $primary-blue;
+  color: $secondary-white;
+}
+
+.job__header.--dark {
+  background: $primary-blue;
+  color: $secondary-white;
+}
+
+.--dark {
+  background: $primary-dark;
+  color: $secondary-white;
 }
 </style>
