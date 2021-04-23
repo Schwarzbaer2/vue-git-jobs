@@ -13,7 +13,10 @@
         </header>
 
         <div class="job__content">
-          <p class="job__info">1w ago &bull; {{ job.type }}</p>
+          <p class="job__info">
+            {{ timestamp }} &bull;
+            {{ job.type }}
+          </p>
           <div class="job__company">
             <h3 class="">{{ job.title }}</h3>
           </div>
@@ -47,6 +50,7 @@
 </template>
 
 <script>
+import moment from "moment";
 import JobService from "../services/JobService";
 import TheHeader from "@/components/TheHeader.vue";
 import BaseButton from "../components/BaseButton.vue";
@@ -63,6 +67,11 @@ export default {
     return {
       job: null,
     };
+  },
+  computed: {
+    timestamp: function() {
+      return moment(new Date(this.job.created_at)).fromNow();
+    },
   },
   created() {
     JobService.getJob(this.id)

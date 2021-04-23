@@ -9,7 +9,6 @@ export default {
   props: {
     buttonType: {
       type: String,
-      required: true,
     },
   },
 };

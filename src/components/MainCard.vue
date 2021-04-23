@@ -8,7 +8,7 @@
         @changeColor="$emit('changeColor')"
       >
         <img class="card__image" :src="job.company_logo" :alt="job.company" />
-        <p class="card__info">5h ago &bull; {{ job.type }}</p>
+        <p class="card__info">{{ timestamp }} &bull; {{ job.type }}</p>
         <div class="card__title">
           <h3 v-if="job.title.length < 20">{{ job.title }}</h3>
           <h3 v-else>{{ job.title.substring(0, 23) + ".." }}</h3>
@@ -25,8 +25,14 @@
 </template>
 
 <script>
+import moment from "moment";
 export default {
   props: ["mode", "job"],
+  computed: {
+    timestamp: function() {
+      return moment(new Date(this.job.created_at)).fromNow();
+    },
+  },
 };
 </script>
 
