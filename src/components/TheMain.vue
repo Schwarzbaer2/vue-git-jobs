@@ -17,6 +17,10 @@
       />
     </div>
 
+    <div v-if="loading">
+      <PageLoader />
+    </div>
+
     <div class="main__grid">
       <MainCard
         v-for="job in jobs"
@@ -35,6 +39,7 @@
 
 <script>
 import axios from "axios";
+import PageLoader from "./PageLoader.vue";
 import MainSearch from "./MainSearch.vue";
 import MainCard from "./MainCard.vue";
 import BaseButton from "./BaseButton.vue";
@@ -43,6 +48,7 @@ import Modal from "./Modal.vue";
 export default {
   name: "TheMain",
   components: {
+    PageLoader,
     MainCard,
     MainSearch,
     BaseButton,
@@ -54,18 +60,22 @@ export default {
       jobs: [],
       searchTerm: "",
       searchLocation: "",
+      searchPage: "1",
       fullTime: "",
       openModal: false,
+      loading: true,
     };
   },
   methods: {
     getJobs(event) {
+      this.loading = true;
       axios
         .get(
-          `https://cors.bridged.cc/https://jobs.github.com/positions.json?description=${this.searchTerm}&full_time=${this.fullTime}&location=${this.searchLocation}`
+          `https://cors.bridged.cc/https://jobs.github.com/positions.json?page=${this.searchPage}?description=${this.searchTerm}&full_time=${this.fullTime}&location=${this.searchLocation}`
         )
         .then((response) => {
           this.jobs = response.data;
+          this.loading = false;
         })
         .catch((error) => {
           console.log(error);
