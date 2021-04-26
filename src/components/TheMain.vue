@@ -74,7 +74,7 @@ export default {
           `https://cors.bridged.cc/https://jobs.github.com/positions.json?page=${this.searchPage}?description=${this.searchTerm}&full_time=${this.fullTime}&location=${this.searchLocation}`
         )
         .then((response) => {
-          this.jobs = this.jobs.concat(response.data);
+          this.jobs = response.data;
           this.loading = false;
         })
         .catch((error) => {
@@ -93,12 +93,9 @@ export default {
     toggleFulltime() {
       this.fullTime !== "on" ? (this.fullime = "on") : (this.fullTime = "");
     },
-    loadMore() {
-      this.searchPage++;
-      this.getJobs();
-    },
+    loadMore() {},
   },
-  mounted() {
+  created() {
     this.getJobs();
   },
 };

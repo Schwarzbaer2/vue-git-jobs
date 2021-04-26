@@ -84,6 +84,7 @@ export default {
     padding-left: 1.5rem;
     background-color: $secondary-white;
     border-radius: 0.375rem;
+    color: yellowgreen;
   }
 
   &__location {
