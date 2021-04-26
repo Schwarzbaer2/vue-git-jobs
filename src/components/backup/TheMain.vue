@@ -32,7 +32,7 @@
     </div>
 
     <div class="main__button">
-      <base-button @click="loadMore">Load More</base-button>
+      <base-button>Load More</base-button>
     </div>
   </main>
 </template>
@@ -74,7 +74,7 @@ export default {
           `https://cors.bridged.cc/https://jobs.github.com/positions.json?page=${this.searchPage}?description=${this.searchTerm}&full_time=${this.fullTime}&location=${this.searchLocation}`
         )
         .then((response) => {
-          this.jobs = this.jobs.concat(response.data);
+          this.jobs = response.data;
           this.loading = false;
         })
         .catch((error) => {
@@ -92,10 +92,6 @@ export default {
     },
     toggleFulltime() {
       this.fullTime !== "on" ? (this.fullime = "on") : (this.fullTime = "");
-    },
-    loadMore() {
-      this.searchPage++;
-      this.getJobs();
     },
   },
   mounted() {

@@ -7,7 +7,13 @@
         :mode="mode"
         @changeColor="$emit('changeColor')"
       >
-        <img class="card__image" :src="job.company_logo" :alt="job.company" />
+        <div v-if="job.company_logo === null" class="card__image-alternative">
+          <p>{{ job.company }}</p>
+        </div>
+        <div v-else>
+          <img class="card__image" :src="job.company_logo" :alt="job.company" />
+        </div>
+
         <p class="card__info">{{ timestamp }} &bull; {{ job.type }}</p>
         <div class="card__title">
           <h3 v-if="job.title.length < 20">{{ job.title }}</h3>
@@ -48,10 +54,17 @@ a {
   background: $secondary-white;
   cursor: pointer;
 
+  &__image-alternative {
+    height: 3rem;
+    width: 15rem;
+    padding-top: 0.2rem;
+    color: $primary-violet;
+  }
+
   &__image {
     transform: translateY(-50%);
     z-index: 2;
-    max-height: 50px;
+    max-height: 3rem;
     max-width: 16rem;
     border-radius: 0.938rem;
     box-shadow: 0px 5px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
@@ -73,6 +86,12 @@ a {
 
   &__location {
     color: $primary-violet;
+  }
+
+  &:hover {
+    transition-timing-function: ease-in-out;
+    transition: 0.25s;
+    transform: scale(1.1);
   }
 }
 

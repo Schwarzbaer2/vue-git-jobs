@@ -16,8 +16,8 @@ export default {
 
 <style lang="scss">
 .button {
-  height: 2.5rem;
-  width: 5.5rem;
+  height: 3rem;
+  width: 7.3rem;
   background: $primary-violet;
   color: $secondary-white;
   border: none;
@@ -25,5 +25,15 @@ export default {
   font-family: $kumbh-sans;
   font-weight: bold;
   outline: none;
+  cursor: pointer;
+
+  &:hover {
+    background: $primary-lightViolet;
+  }
+}
+
+.--isSmall {
+  height: 3rem;
+  width: 7.3rem;
 }
 </style>

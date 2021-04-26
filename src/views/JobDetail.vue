@@ -7,8 +7,9 @@
           <div class="job__header" :class="mode">
             <img class="job__logo" :src="job.company_logo" :alt="job.company" />
             <h3>{{ job.company }}</h3>
-
-            <base-button>Company Site</base-button>
+            <a :href="job.company_url" target="_blank" alt="job.company">
+              <base-button>Company Site</base-button>
+            </a>
           </div>
         </header>
 
@@ -25,7 +26,9 @@
           </div>
 
           <div class="job__apply" :class="mode">
-            <base-button>Apply Now</base-button>
+            <a :href="job.url" target="_blank">
+              <base-button>Apply Now</base-button>
+            </a>
           </div>
 
           <div class="job__description" v-html="job.description"></div>
@@ -36,14 +39,14 @@
     <div class="job__footer">
       <div class="job__contact">
         <h3>How to Apply</h3>
-
         <div v-html="job.how_to_apply"></div>
       </div>
 
       <div class="job__apply" :class="mode">
-        <base-button>
-          Apply Now
-        </base-button>
+        <a :href="job.how_to_apply" target="_blank" alt="job.company"> </a>
+        <a :href="job.url" target="_blank">
+          <base-button>Apply Now</base-button>
+        </a>
       </div>
     </div>
   </div>
