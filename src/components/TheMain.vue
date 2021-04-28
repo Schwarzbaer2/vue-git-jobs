@@ -60,7 +60,7 @@ export default {
       jobs: [],
       searchTerm: "",
       searchLocation: "",
-      searchPage: "1",
+      searchPage: 1,
       fullTime: "",
       openModal: false,
       loading: true,
@@ -68,6 +68,7 @@ export default {
   },
   methods: {
     getJobs(event) {
+      this.searchPage = 1;
       this.loading = true;
       axios
         .get(
@@ -93,7 +94,22 @@ export default {
     toggleFulltime() {
       this.fullTime !== "on" ? (this.fullime = "on") : (this.fullTime = "");
     },
-    loadMore() {},
+    loadMore() {
+      this.loading = true;
+      this.searchPage++;
+      axios
+        .get(
+          `https://cors.bridged.cc/https://jobs.github.com/positions.json?page=${this.searchPage}?description=${this.searchTerm}&full_time=${this.fullTime}&location=${this.searchLocation}`
+        )
+        .then((response) => {
+          let newJobArray = response.data;
+          this.jobs = this.jobs.concat(newJobArray);
+          this.loading = false;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
   created() {
     this.getJobs();
